@@ -1,7 +1,7 @@
 import React from "react";
 
 function DisplayItems(props) {
-  console.log("4_Display List Component");
+  console.log("5_Display List Component");
 
   return (
     <div>

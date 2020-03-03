@@ -9,11 +9,13 @@ function SearchBar() {
   return (
     <div>
       <br />
-      <input
-        type="search"
-        placeholder="Search Items"
-        onChange={event => searchItem(event)}
-      />
+      <form>
+        <input
+          type="search"
+          placeholder="Search Items"
+          onChange={event => searchItem(event)}
+        />
+      </form>
     </div>
   );
 }
