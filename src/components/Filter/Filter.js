@@ -10,18 +10,15 @@ function FilterComponent(props) {
   const filterItems = filterBy => {
     console.log("1.3_Filtering Items");
 
-    setSelectedFilter(filterBy);
+    let sortedItems = [...items];
 
     if (filterBy === "name") {
-      let sortedItems = [...items];
       sortedItems.sort(compareByName);
       saveFilteredItems(sortedItems);
     } else if (filterBy === "quantity") {
-      let sortedItems = [...items];
       sortedItems.sort(compareByQuantity);
       saveFilteredItems(sortedItems);
     } else if (filterBy === "date") {
-      let sortedItems = [...items];
       sortedItems.sort(compareByTimestamp);
       saveFilteredItems(sortedItems);
     }
@@ -102,7 +99,13 @@ function FilterComponent(props) {
       <br />
       <form>
         <label htmlFor="items">Filter By: </label>
-        <select onChange={event => filterItems(event.target.value)}>
+
+        <select
+          onChange={event => {
+            filterItems(event.target.value);
+            setSelectedFilter(event.target.value);
+          }}
+        >
           <option value="date">Date</option>
           <option value="name">Name</option>
           <option value="quantity">Quantity</option>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import NameQuantForm from "./components/NameQuantForm";
-import DisplayItems from "./components/DisplayItems";
-import SearchBar from "./components/SearchBar";
-import Filter from "./components/Filter";
+import NameQuantForm from "./components/NameAndQuantityForm/NameQuantForm";
+import DisplayItems from "./components/DisplayItems/DisplayItems";
+import SearchBar from "./components/SearchBar/SearchBar";
+import Filter from "./components/Filter/Filter";
 function App() {
   const [items, setItems] = useState([]);
 
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <NameQuantForm items={items} saveItem={saveItem} />
+      <NameQuantForm saveItem={saveItem} />
       <SearchBar items={items} />
       {items.length > 1 ? (
         <Filter items={items} saveFilteredItems={saveFilteredItems} />
