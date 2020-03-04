@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import { InputLabel, Select, MenuItem } from "@material-ui/core";
+import ImportExportIcon from "@material-ui/icons/ImportExport";
 function FilterComponent(props) {
   console.log("4_Filter Component");
   const { items, saveFilteredItems } = props;
@@ -95,31 +96,32 @@ function FilterComponent(props) {
     return comparison;
   };
   return (
-    <div>
-      <br />
-      <form>
-        <label htmlFor="items">Filter By: </label>
-
-        <select
-          onChange={event => {
-            filterItems(event.target.value);
-            setSelectedFilter(event.target.value);
-          }}
-        >
-          <option value="date">Date</option>
-          <option value="name">Name</option>
-          <option value="quantity">Quantity</option>
-        </select>
-        <button
-          disabled={selectedFilter ? false : true}
-          onClick={event => {
-            reverseFilter(event);
-          }}
-        >
-          ^
-        </button>
-      </form>
-    </div>
+    <form style={{ display: "flex", marginTop: "20px" }}>
+      <InputLabel style={{ marginTop: "8px" }}>Filter :&nbsp;</InputLabel>
+      <Select
+        autoWidth={true}
+        value={selectedFilter}
+        style={{ height: "30px", width: "150px" }}
+        onChange={event => {
+          filterItems(event.target.value);
+          setSelectedFilter(event.target.value);
+        }}
+      >
+        <MenuItem value="date">By Date</MenuItem>
+        <MenuItem value="name">By Name</MenuItem>
+        <MenuItem value="quantity">By Quantity</MenuItem>
+      </Select>
+      <ImportExportIcon
+        style={{ marginTop: "4" }}
+        onClick={event => {
+          reverseFilter(event);
+        }}
+        variant="contained"
+        size="small"
+      >
+        ^
+      </ImportExportIcon>
+    </form>
   );
 }
 export default FilterComponent;

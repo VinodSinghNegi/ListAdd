@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import Filter from "./components/Filter/Filter";
 function App() {
   const [items, setItems] = useState([]);
+  const [duplicateItem, setDuplicateItem] = useState([]);
 
   console.log("1_App Component");
 
@@ -24,17 +25,32 @@ function App() {
   };
 
   const saveFilteredItems = sortedItems => {
+    console.log("1.3_Saving Filtered Items");
     setItems(sortedItems);
   };
 
+  const exchangeShowValue = searchResult => {
+    setDuplicateItem(searchResult);
+  };
+
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <NameQuantForm saveItem={saveItem} />
-      <SearchBar items={items} />
-      {items.length > 1 ? (
+      {/* {items.length > 1 ?  */}
+      <div style={{ display: "flex" }}>
+        <SearchBar items={items} exchangeShowValue={exchangeShowValue} />
+        {/* : null} */}
+        {/* {items.length > 1 ? ( */}
         <Filter items={items} saveFilteredItems={saveFilteredItems} />
-      ) : null}
-      <DisplayItems items={items} deleteItem={deleteItem} />
+        {/* ) : null} */}
+      </div>
+      {duplicateItem.length > 0 ? (
+        <DisplayItems itemList={duplicateItem} deleteItem={deleteItem} />
+      ) : (
+        <DisplayItems itemList={items} deleteItem={deleteItem} />
+      )}
     </div>
   );
 }

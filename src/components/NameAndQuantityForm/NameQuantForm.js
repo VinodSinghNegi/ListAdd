@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { TextField, Button } from "@material-ui/core";
 
 function NameQuantForm(props) {
   console.log("2_Name & Quantity Component");
-
+  const { saveItem } = props;
   const [name, setName] = useState();
   const [quantity, setQuantity] = useState();
 
@@ -14,28 +15,49 @@ function NameQuantForm(props) {
   }, []);
 
   return (
-    <form onSubmit={event => props.saveItem(event, name, quantity)}>
-      <input
-        ref={nameRef}
-        type="text"
-        placeholder="Enter Name"
-        name="name"
-        // value={name}
-        onChange={event => {
-          setName(event.target.value);
-        }}
-      />
-      <input
-        type="number"
-        name="quantity"
-        placeholder="Enter Quantity"
-        // value={quantity}
-        onChange={event => {
-          setQuantity(event.target.value);
-        }}
-      />
-      <input type="submit" value="Add" />
-    </form>
+    <div style={{ marginTop: "20px" }}>
+      <form onSubmit={event => saveItem(event, name, quantity)}>
+        <div>
+          <TextField
+            type="text"
+            name="name"
+            label="Item Name"
+            placeholder="Enter Item Name"
+            variant="outlined"
+            size="small"
+            autoComplete="true"
+            inputRef={nameRef}
+            onChange={event => {
+              setName(event.target.value);
+            }}
+          />
+        </div>
+        <div style={{ marginTop: "20px" }}>
+          <TextField
+            type="number"
+            name="quantity"
+            label="Quantity"
+            placeholder="Enter Quantity"
+            variant="outlined"
+            size="small"
+            onChange={event => {
+              setQuantity(event.target.value);
+            }}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            marginTop: "20px",
+            justifyContent: "center"
+          }}
+        >
+          <Button type="submit" variant="contained" color="primary">
+            Add
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }
 
