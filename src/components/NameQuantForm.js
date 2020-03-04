@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 function NameQuantForm(props) {
-  console.log("2_Name & Quantity Component");
+  // console.log("2_Name & Quantity Component");
 
   const [name, setName] = useState();
   const [quantity, setQuantity] = useState();
@@ -12,7 +12,7 @@ function NameQuantForm(props) {
     nameRef.current.focus();
     setName();
     setQuantity();
-    console.log("2.1_Focus Reset");
+    // console.log("2.1_Focus Reset");
   }, [props.items]);
 
   return (

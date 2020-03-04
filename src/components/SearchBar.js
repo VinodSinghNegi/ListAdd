@@ -1,10 +1,10 @@
 import React from "react";
 
 function SearchBar() {
-  console.log("3_Search Bar Component");
+  // console.log("3_Search Bar Component");
 
   const searchItem = event => {
-    console.log("Searching...");
+    // console.log("Searching...");
   };
   return (
     <div>
