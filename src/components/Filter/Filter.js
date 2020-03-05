@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { InputLabel, Select, MenuItem } from "@material-ui/core";
 import ImportExportIcon from "@material-ui/icons/ImportExport";
+
 function FilterComponent(props) {
   console.log("4_Filter Component");
   const { items, saveFilteredItems } = props;
@@ -9,7 +10,7 @@ function FilterComponent(props) {
   const [revFilter, setRevFilter] = useState(false);
 
   const filterItems = filterBy => {
-    console.log("1.3_Filtering Items");
+    console.log("4.3_Filtering Items");
 
     let sortedItems = [...items];
 
@@ -32,6 +33,7 @@ function FilterComponent(props) {
 
   useEffect(() => {
     filterItems(selectedFilter);
+    // eslint-disable-next-line
   }, [revFilter]);
 
   const compareByName = (first, second) => {
@@ -96,8 +98,8 @@ function FilterComponent(props) {
     return comparison;
   };
   return (
-    <form style={{ display: "flex", marginTop: "20px" }}>
-      <InputLabel style={{ marginTop: "8px" }}>Filter :&nbsp;</InputLabel>
+    <form style={{ display: "flex" }}>
+      <InputLabel style={{ marginTop: "8px" }}>Filter &nbsp;</InputLabel>
       <Select
         autoWidth={true}
         value={selectedFilter}
