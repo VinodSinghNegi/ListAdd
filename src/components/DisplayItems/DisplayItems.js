@@ -9,15 +9,17 @@ import {
   TableRow
 } from "@material-ui/core";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
-function DisplayItems(props) {
-  console.log("5_Display List Component");
+import "../icon.css";
+
+const DisplayItems = React.memo(props => {
+  // console.log("5_Display List Component");
   const { items, deleteItem } = props;
 
   const StyledTableCell = withStyles(theme => ({
     head: {
       backgroundColor: "#30409F",
       color: theme.palette.common.white,
-      fontSize: 20
+      fontSize: 18
     },
     body: {
       fontSize: 16
@@ -52,7 +54,7 @@ function DisplayItems(props) {
       </TableContainer>
       <TableContainer
         style={{
-          maxHeight: "650px"
+          maxHeight: "600px"
         }}
       >
         <Table>
@@ -69,7 +71,7 @@ function DisplayItems(props) {
                     deleteItem(event, item.createdAt);
                   }}
                 >
-                  <DeleteOutlinedIcon color="error" />
+                  <DeleteOutlinedIcon id="icon" color="error" />
                 </StyledTableCell>
               </StyledTableRow>
             ))}
@@ -77,6 +79,7 @@ function DisplayItems(props) {
         </Table>
       </TableContainer>
       <div
+        id="footer"
         style={{
           backgroundColor: "#30409F",
           borderRadius: "6px",
@@ -87,5 +90,5 @@ function DisplayItems(props) {
       </div>
     </>
   );
-}
+});
 export default DisplayItems;
