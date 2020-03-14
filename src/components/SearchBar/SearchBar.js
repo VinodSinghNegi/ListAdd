@@ -1,22 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { TextField } from "@material-ui/core";
 
-function SearchBar(props) {
-  console.log("3_Search Bar Component");
+const SearchBar = React.memo(props => {
+  // console.log("3_Search Bar Component");
   const { items, exchangeShowValue } = props;
 
   const [searchKey, setSearchKey] = useState();
   const [searchResult, setSearchResult] = useState([]);
-  const saveSearchKey = keyword => {
+
+  const saveSearchKey = useCallback(keyword => {
     setSearchKey(keyword);
-  };
+  }, []);
 
-  const searchItem = () => {
-    console.log("Searching...");
-
+  const searchItem = useCallback(() => {
+    // console.log("3.1_Searching...");
     setSearchResult(items.filter(item => item.name.includes(searchKey)));
+<<<<<<< HEAD
   };
   // eslint-disable-next-line
+=======
+  }, [items, searchKey]);
+
+>>>>>>> 0fe8c84813a85d0e2d10f44f6fdf6eb5ace2091e
   useEffect(() => {
     const timer = setTimeout(() => {
       // eslint-disable-next-line
@@ -25,6 +30,7 @@ function SearchBar(props) {
     return () => {
       clearTimeout(timer);
     };
+<<<<<<< HEAD
     // eslint-disable-next-line
   }, [searchKey]);
 
@@ -32,11 +38,20 @@ function SearchBar(props) {
     exchangeShowValue(searchResult);
     // eslint-disable-next-line
   }, [searchResult]);
+=======
+  }, [searchItem]);
+
+  useEffect(() => {
+    // console.log("3.2_Sending Searched Items");
+    exchangeShowValue(searchResult, searchKey);
+  }, [exchangeShowValue, searchKey, searchResult]);
+>>>>>>> 0fe8c84813a85d0e2d10f44f6fdf6eb5ace2091e
 
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div>
       <form>
         <TextField
+          disabled={items.length > 0 ? false : true}
           type="search"
           placeholder="Search Items"
           onChange={event => saveSearchKey(event.target.value)}
@@ -44,6 +59,6 @@ function SearchBar(props) {
       </form>
     </div>
   );
-}
+});
 
 export default SearchBar;
