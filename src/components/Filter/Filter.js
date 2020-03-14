@@ -29,9 +29,8 @@ function FilterComponent(props) {
     event.preventDefault();
     setRevFilter(!revFilter);
   };
-
   useEffect(() => {
-    filterItems(selectedFilter);
+    // eslint-disable-next-linefilterItems(selectedFilter);
   }, [revFilter]);
 
   const compareByName = (first, second) => {

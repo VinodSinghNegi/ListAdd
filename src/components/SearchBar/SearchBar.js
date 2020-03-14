@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
-import DisplayItems from "../DisplayItems/DisplayItems";
 
 function SearchBar(props) {
   console.log("3_Search Bar Component");
@@ -17,18 +16,21 @@ function SearchBar(props) {
 
     setSearchResult(items.filter(item => item.name.includes(searchKey)));
   };
-
+  // eslint-disable-next-line
   useEffect(() => {
     const timer = setTimeout(() => {
+      // eslint-disable-next-line
       searchItem();
     }, 1000);
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line
   }, [searchKey]);
 
   useEffect(() => {
     exchangeShowValue(searchResult);
+    // eslint-disable-next-line
   }, [searchResult]);
 
   return (
@@ -37,7 +39,6 @@ function SearchBar(props) {
         <TextField
           type="search"
           placeholder="Search Items"
-          onEmptied={event => setSearchKey()}
           onChange={event => saveSearchKey(event.target.value)}
         />
       </form>
