@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Loader = props => {
+const Loader = React.memo(props => {
   // console.log("Loading");
 
   const classes = useStyles();
@@ -19,5 +19,5 @@ const Loader = props => {
       <LinearProgress />
     </div>
   );
-};
+});
 export default Loader;

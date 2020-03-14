@@ -15,13 +15,8 @@ const SearchBar = React.memo(props => {
   const searchItem = useCallback(() => {
     // console.log("3.1_Searching...");
     setSearchResult(items.filter(item => item.name.includes(searchKey)));
-<<<<<<< HEAD
-  };
-  // eslint-disable-next-line
-=======
   }, [items, searchKey]);
 
->>>>>>> 0fe8c84813a85d0e2d10f44f6fdf6eb5ace2091e
   useEffect(() => {
     const timer = setTimeout(() => {
       // eslint-disable-next-line
@@ -30,22 +25,12 @@ const SearchBar = React.memo(props => {
     return () => {
       clearTimeout(timer);
     };
-<<<<<<< HEAD
-    // eslint-disable-next-line
-  }, [searchKey]);
-
-  useEffect(() => {
-    exchangeShowValue(searchResult);
-    // eslint-disable-next-line
-  }, [searchResult]);
-=======
   }, [searchItem]);
 
   useEffect(() => {
     // console.log("3.2_Sending Searched Items");
     exchangeShowValue(searchResult, searchKey);
   }, [exchangeShowValue, searchKey, searchResult]);
->>>>>>> 0fe8c84813a85d0e2d10f44f6fdf6eb5ace2091e
 
   return (
     <div>

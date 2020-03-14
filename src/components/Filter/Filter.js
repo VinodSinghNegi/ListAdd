@@ -56,15 +56,6 @@ const FilterComponent = React.memo(props => {
     [revFilter]
   );
 
-<<<<<<< HEAD
-  const reverseFilter = event => {
-    event.preventDefault();
-    setRevFilter(!revFilter);
-  };
-  useEffect(() => {
-    // eslint-disable-next-linefilterItems(selectedFilter);
-  }, [revFilter]);
-=======
   const compareByTimestamp = useCallback(
     (first, second) => {
       const timeFirst = first.createdAt;
@@ -88,7 +79,6 @@ const FilterComponent = React.memo(props => {
     },
     [revFilter]
   );
->>>>>>> 0fe8c84813a85d0e2d10f44f6fdf6eb5ace2091e
 
   const filterItems = useCallback(
     filterBy => {

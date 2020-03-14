@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { TextField, Button } from "@material-ui/core";
-import ProgressBar from "../Loader/loader";
+
 const NameQuantForm = React.memo(props => {
   // console.log("2_Name & Quantity Component");
   const { saveItem } = props;
@@ -84,11 +84,11 @@ const NameQuantForm = React.memo(props => {
       </form>
       {loader ? (
         <div>
-          <ProgressBar />
+          <props.ProgressBar />
         </div>
       ) : (
         <div style={{ opacity: "0" }}>
-          <ProgressBar />
+          <props.ProgressBar />
         </div>
       )}
     </div>
